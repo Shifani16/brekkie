@@ -3,6 +3,7 @@ package com.example.projectakhirdashboard
 import RecipeViewModel
 import android.app.Application
 import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -89,8 +90,140 @@ class MainActivity : ComponentActivity() {
         setContent {
             ProjectAkhirDashboardTheme {
                 navController = rememberNavController()
-                
-                AppNavigation(navController = navController)
+
+                val startDestination = if (auth.currentUser != null) {
+                    "home/${auth.currentUser!!.uid}/${auth.currentUser!!.displayName ?: ""}"
+                } else {
+                    "login"
+                }
+
+                NavHost(navController = navController, startDestination = startDestination) {
+                    composable("login") {
+                        LoginPage(navController = navController)
+                    }
+                    composable("register") {
+                        RegisterScreen(navController = navController)
+                    }
+                    composable("forgotpass") {
+                        ForgotPassPage(navController = navController, auth = auth)
+                    }
+                    composable("home/{userId}/{displayName}") { backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        LandingPage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable("graph") {backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        GraphPage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable("profile") {backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        ProfilePage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable("policy") {backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        PolicyPage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable("like/{userId}/{displayName}", arguments = listOf(
+                        navArgument("userId") { type = NavType.StringType },
+                        navArgument("displayName") { type = NavType.StringType; nullable = true } // displayName can be null
+                    )) { backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName")
+                        LikePage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable("notif") { backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        val context = LocalContext.current
+                        NotificationPage(navController = navController, context = context, userId = userId, displayName = displayName)
+                    }
+                    composable("passauth") { backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        AutentikasiPage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable("menu") {backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        CookPage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable(route = "recipe_detail/{recipeId}", arguments = listOf(navArgument("recipeId") { type = NavType.StringType })
+                    ) { backStackEntry ->
+                        val recipeId = backStackEntry.arguments?.getString("recipeId") ?: return@composable
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+
+                        val viewModel: RecipeViewModel = viewModel(
+                            factory = ViewModelProvider.AndroidViewModelFactory(LocalContext.current.applicationContext as Application)
+                        )
+                        val recipeData by viewModel.recipeData.collectAsState()
+                        val recipe = recipeData.recipes.values.flatten().find { it.id == recipeId }
+
+                        RecipeDetail(recipeId = recipeId, navController = navController, recipe = recipe, userId = userId, displayName = displayName
+                        )
+                    }
+                    composable("catering") {backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        CateringPage(navController = navController, userId = userId, displayName = displayName)
+                    }
+                    composable(route = "detail_order/{packageId}/{packageName}/{packagePrice}", arguments = listOf(
+                        navArgument("packageId") { type = NavType.StringType },
+                        navArgument("packageName") { type = NavType.StringType },
+                        navArgument("packagePrice") { type = NavType.StringType }
+                    )
+                    ) { backStackEntry ->
+                        val packageId = backStackEntry.arguments?.getString("packageId") ?: ""
+                        val packageName = backStackEntry.arguments?.getString("packageName") ?: ""
+                        val packagePrice = backStackEntry.arguments?.getString("packagePrice") ?: ""
+                        val context = LocalContext.current
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        DetailOrder(
+                            navController = navController,
+                            context = context,
+                            userId = userId,
+                            displayName = displayName,
+                            packageId = packageId.toString(),
+                            packageName = packageName.toString(),
+                            packagePrice = packagePrice.toString()
+                        )
+                    }
+                    composable(
+                        route = "payment_screen/{packageId}/{packageName}/{packagePrice}/{phone}/{address}/{deliveryTime}/{additionalInfo}",
+                        arguments = listOf(
+                            navArgument("packageId") { type = NavType.StringType },
+                            navArgument("packageName") { type = NavType.StringType },
+                            navArgument("packagePrice") { type = NavType.StringType },
+                            navArgument("phone") { type = NavType.StringType },
+                            navArgument("address") { type = NavType.StringType },
+                            navArgument("deliveryTime") { type = NavType.StringType },
+                            navArgument("additionalInfo") { type = NavType.StringType }
+                        )
+                    ) { backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        val packageId = backStackEntry.arguments?.getString("packageId") ?: ""
+                        val packageName = backStackEntry.arguments?.getString("packageName") ?: ""
+                        val packagePrice = backStackEntry.arguments?.getString("packagePrice") ?: ""
+                        val phoneFromDetail = backStackEntry.arguments?.getString("phone")?.let { Uri.decode(it) }
+                        val addressFromDetail = backStackEntry.arguments?.getString("address")?.let { Uri.decode(it) }
+                        val deliveryTimeFromDetail = backStackEntry.arguments?.getString("deliveryTime")?.let { Uri.decode(it) }
+                        val additionalInfo = backStackEntry.arguments?.getString("additionalInfo")?.let { Uri.decode(it) }
+                        PaymentScreen(navController = navController, packageId = packageId, packageName = packageName,
+                            packagePrice = packagePrice, userId = userId, displayName = displayName, phoneFromDetail = phoneFromDetail,  addressFromDetail = addressFromDetail,
+                            deliveryTimeFromDetail = deliveryTimeFromDetail, additionalInfo = additionalInfo)
+                    }
+                    composable("payment_success") {backStackEntry ->
+                        val userId = backStackEntry.arguments?.getString("userId") ?: ""
+                        val displayName = backStackEntry.arguments?.getString("displayName") ?: ""
+                        PaymentSuccess(navController = navController, userId = userId, displayName = displayName)
+                    }
+                }
             }
         }
     }
