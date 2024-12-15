@@ -53,6 +53,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -63,6 +64,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
@@ -373,28 +375,38 @@ fun CategoryItem(iconRes: Int, isSelected: Boolean, onClick: () -> Unit) {
 
 @Composable
 fun FoodCardRow(recipes: List<Recipe>, navController: NavHostController) {
-    val chunkedRecipes = recipes.chunked(2)
+    val configuration = LocalConfiguration.current
+    val screenWidth = configuration.screenWidthDp.dp
+    val cardWidth = (screenWidth * 0.4f)
+    val horizontalPadding = 16.dp
+
+    val itemsPerRow = ((screenWidth - horizontalPadding) / cardWidth).toInt().coerceAtLeast(1)
+
+    val chunkedRecipes = recipes.chunked(itemsPerRow)
 
     Column(modifier = Modifier.fillMaxWidth()) {
         chunkedRecipes.forEach { rowRecipes ->
-            Row(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 14.dp, end = 8.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
                 rowRecipes.forEach { recipe ->
-                    FoodCard(recipe = recipe, navController = navController)
+                    FoodCard(recipe = recipe, navController = navController, cardWidth = cardWidth)
+                }
+
+                val emptySlots = itemsPerRow - rowRecipes.size
+                repeat(emptySlots) {
+                    Spacer(modifier = Modifier.width(cardWidth))
                 }
             }
         }
     }
-    if (recipes.size < 2) {
-        Box(modifier = Modifier
-            .aspectRatio(1f)) {
-
-        }
-    }
 }
 
-
 @Composable
-fun FoodCard(recipe: Recipe, navController: NavHostController) {
+fun FoodCard(recipe: Recipe, navController: NavHostController, cardWidth: Dp) {
     val auth = FirebaseAuth.getInstance()
     val currentUser = auth.currentUser ?: return
     val userId = currentUser.uid
@@ -424,8 +436,8 @@ fun FoodCard(recipe: Recipe, navController: NavHostController) {
     } else {
         Card(
             modifier = Modifier
-                .width(160.dp)
-                .padding(8.dp),
+                .width(cardWidth)
+                .padding(6.dp),
             shape = RoundedCornerShape(16.dp),
             colors = CardDefaults.cardColors(containerColor = Color.White),
             elevation = CardDefaults.elevatedCardElevation(4.dp)
@@ -505,7 +517,6 @@ fun FoodCard(recipe: Recipe, navController: NavHostController) {
                                 "image" to recipe.image
                             )
 
-                            // Handle Firebase Updates
                             if (checked) {
                                 database.child("users").child(userId).child("favorites").child(recipe.title).setValue(recipeData)
                                     .addOnCompleteListener {

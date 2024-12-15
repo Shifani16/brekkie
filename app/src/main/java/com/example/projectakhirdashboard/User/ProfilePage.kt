@@ -61,6 +61,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.core.net.toUri
 import androidx.navigation.NavHostController
 import coil.compose.rememberImagePainter
 import com.example.projectakhirdashboard.BottomNavigationBar
@@ -71,10 +72,12 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import kotlinx.coroutines.tasks.await
 import java.io.ByteArrayOutputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Date
+import java.util.UUID
 
 @Composable
 fun ProfilePage(navController: NavHostController, userId: String, displayName: String?) {
@@ -92,6 +95,7 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
     var isLoading by rememberSaveable { mutableStateOf(true) }
 
     val imageFilename = "profile_image_$userId.jpg"
+    var imageKey by remember { mutableStateOf(UUID.randomUUID().toString()) }
 
     val imagePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent(),
@@ -106,36 +110,40 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
         }
     )
 
-    LaunchedEffect(key1 = Unit) {
-        val userId = auth.currentUser?.uid ?: return@LaunchedEffect
-        val databaseRef = FirebaseDatabase.getInstance().getReference("users/$userId/profileImage")
+    LaunchedEffect(key1 = userId) { // Relaunch if userId changes (logout/login)
+        val currentUser = auth.currentUser ?: return@LaunchedEffect
+        val imageFilename = "profile_image_${currentUser.uid}.jpg"
+        val imageFile = File(mContext.filesDir, imageFilename)
+        val databaseRef = FirebaseDatabase.getInstance().getReference("users/${currentUser.uid}/profileImage")
 
-        val existingImageUri = getImageUriFromMediaStore(mContext, imageFilename)
-        if (existingImageUri != null) {
-            profileImageUri = existingImageUri
-            isLoading = false
-            return@LaunchedEffect
-        }
-
-        databaseRef.get().addOnSuccessListener { snapshot ->
-            val base64Image = snapshot.getValue(String::class.java)
-            if (!base64Image.isNullOrEmpty()) {
-                try {
-                    val imageBytes = Base64.decode(base64Image, Base64.DEFAULT)
-                    val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-
-                    val path = MediaStore.Images.Media.insertImage(mContext.contentResolver, bitmap, imageFilename, null)
-                    profileImageUri = Uri.parse(path)
-
-                } catch (e: Exception) {
-                    Log.e("ProfilePage", "Error decoding image: ${e.message}")
-                }
+        try {
+            if (imageFile.exists()) {
+                profileImageUri = imageFile.toUri()
+                isLoading = false
+                return@LaunchedEffect
             }
+
+            val base64Image = databaseRef.get().await().getValue(String::class.java)
+
+
+            profileImageUri = if (!base64Image.isNullOrEmpty()) {
+                val imageBytes = Base64.decode(base64Image, Base64.DEFAULT)
+                val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+
+                FileOutputStream(imageFile).use { fos ->
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+                }
+                imageFile.toUri()
+            } else {
+                null
+            }
+
             isLoading = false
-        }.addOnFailureListener {
-            // ... error handling ...
+        } catch (e: Exception) {
+            Log.e("ProfilePage", "Error loading profile image: ${e.message}", e)
             isLoading = false
         }
+
     }
 
     val cameraLauncher = rememberLauncherForActivityResult(
@@ -146,7 +154,6 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
                     deleteOnExit()
                 }
 
-
                 FileOutputStream(tmpFile).use {
                     image.compress(Bitmap.CompressFormat.JPEG, 100, it)
                 }
@@ -156,7 +163,10 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
             profileImageUri = uri
             uploadProfileImageToFirebase(uri, mContext) { success ->
                 if (success) {
-                    Toast.makeText(mContext, "Successfully update profile image", Toast.LENGTH_LONG)
+                    profileImageUri = uri
+                    Toast.makeText(mContext, "Successfully uploaded profile picture", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(mContext, "Failed to upload profile picture", Toast.LENGTH_LONG).show()
                 }
             }
         }
@@ -200,7 +210,10 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
                         CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
                     } else if (profileImageUri != null) {
                         Image(
-                            painter = rememberImagePainter(profileImageUri),
+                            painter = rememberImagePainter(data = profileImageUri, builder = {
+                                crossfade(true)
+                                memoryCacheKey(imageKey)
+                            }),
                             contentDescription = "Profile Picture",
                             modifier = Modifier
                                 .size(90.dp)
@@ -210,7 +223,7 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
                     } else {
                         Image(
                             painter = painterResource(id = R.drawable.ic_profilepict),
-                            contentDescription = "Profile Picture",
+                            contentDescription = "Profile Picture 2",
                             modifier = Modifier
                                 .size(90.dp)
                                 .clip(CircleShape),
@@ -265,7 +278,16 @@ fun ProfilePage(navController: NavHostController, userId: String, displayName: S
                                 showDeleteConfirmationDialog = false
                                 deleteProfileImageFromFirebase(mContext) { success ->
                                     if (success) {
-                                        profileImageUri = null // Update UI
+                                        val currentUser = auth.currentUser ?: return@deleteProfileImageFromFirebase
+                                        val imageFilename = "profile_image_${currentUser.uid}.jpg"
+                                        val imageFile = File(mContext.filesDir, imageFilename)
+
+                                        // Delete the local image file
+                                        if (imageFile.exists()){
+                                            imageFile.delete()
+                                        }
+                                        profileImageUri = null
+                                        isLoading = false
                                         Toast.makeText(mContext, "Profile picture deleted!", Toast.LENGTH_SHORT).show()
                                     } else {
                                         Toast.makeText(mContext, "Failed to delete profile picture.", Toast.LENGTH_SHORT).show()
@@ -595,22 +617,24 @@ fun EditUsernameDialog(currentUsername: String, onDismiss: () -> Unit, onConfirm
 }
 
 private fun uploadProfileImageToFirebase(uri: Uri?, context: Context, onResult: (Boolean) -> Unit) {
-    if (uri == null) {
+    val currentUser = FirebaseAuth.getInstance().currentUser
+
+    val userId = currentUser?.uid ?: run {
         onResult(false)
         return
+    }
+    val imageFile = File(context.filesDir, "profile_image_$userId.jpg")
+
+    if (imageFile.exists()){
+        imageFile.delete()
     }
 
-    val user = FirebaseAuth.getInstance().currentUser
-    val userId = user?.uid ?: run {
-        onResult(false)
-        return
-    }
 
     val databaseRef = FirebaseDatabase.getInstance().getReference("users/$userId/profileImage")
     val contentResolver = context.contentResolver
 
     try {
-        val inputStream = contentResolver.openInputStream(uri)
+        val inputStream = uri?.let { contentResolver.openInputStream(it) }
         val bitmap = BitmapFactory.decodeStream(inputStream)
         val outputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
@@ -633,6 +657,7 @@ private fun uploadProfileImageToFirebase(uri: Uri?, context: Context, onResult: 
     }
 }
 
+
 private fun deleteProfileImageFromFirebase(context: Context, onResult: (Boolean) -> Unit) {
     val userId = FirebaseAuth.getInstance().currentUser?.uid ?: run {
         onResult(false)
@@ -647,6 +672,11 @@ private fun deleteProfileImageFromFirebase(context: Context, onResult: (Boolean)
         .addOnFailureListener {
             onResult(false)
         }
+}
+
+private fun deleteImageFromInternalStorage(context: Context, filename: String): Boolean {
+    val imageFile = File(context.filesDir, filename)
+    return imageFile.delete()
 }
 
 fun getImageUriFromMediaStore(context: Context, imageFilename: String): Uri? {
@@ -670,4 +700,5 @@ fun getImageUriFromMediaStore(context: Context, imageFilename: String): Uri? {
         }
     }
 }
+
 

@@ -1,14 +1,13 @@
 <resources>
     <string name="app_name">Brekkie</string>
     <string name="default_web_client_id">client_id</string>
-    <string name="paragraf">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    <string name="paragraf">Kami sangat menghargai privasi Anda dan berkomitmen untuk melindungi data pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi yang Anda berikan saat menggunakan aplikasi kami.
     </string>
     <string name="paragraf2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Kami menggunakan langkah-langkah keamanan yang sesuai untuk melindungi data pribadi Anda dari akses, penggunaan, atau pengungkapan yang tidak sah. Namun, kami tidak dapat menjamin keamanan absolut data Anda.
     </string>
     <string name="paragraf3">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Anda memiliki hak atas data pribadi Anda, termasuk: Meminta akses atau salinan data Anda, Memperbarui atau memperbaiki informasi pribadi Anda, dan Menghapus data Anda dari sistem kami (dengan beberapa pengecualian berdasarkan hukum).
     </string>
     <string name="funfact">
         Sarapan yang sehat dapat meningkatkan konsentrasi dan performa otak hingga 20%! Penelitian menunjukkan bahwa sarapan membantu mengisi kembali glukosa—sumber energi utama untuk otak—setelah semalaman berpuasa. Jadi, jika kamu ingin lebih fokus dan produktif, jangan lewatkan sarapanmu!

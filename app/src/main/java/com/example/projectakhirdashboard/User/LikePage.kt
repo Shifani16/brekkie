@@ -26,6 +26,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.CircularProgressIndicator
@@ -127,7 +128,15 @@ fun LikePage(modifier: Modifier = Modifier, navController: NavHostController, us
                 .fillMaxSize()
                 .padding(16.dp)
         ) {
-            Spacer(modifier = Modifier.height(40.dp))
+            IconButton(onClick = { navController.popBackStack() }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Kembali",
+                    tint = Color.Black
+
+                )
+            }
+            Spacer(modifier = Modifier.height(10.dp))
 
             Text(
                 text = "List Sarapan",
@@ -276,7 +285,6 @@ fun BreakfastCardItem(
                     }
             )
 
-            // Title Section
             Text(
                 text = title,
                 style = MaterialTheme.typography.h6,
@@ -291,13 +299,12 @@ fun BreakfastCardItem(
                 }
             )
 
-            // Description Section
             Text(
                 text = description,
                 style = MaterialTheme.typography.body2,
                 color = Color.Gray,
-                maxLines = 2, // Restrict description to two lines
-                overflow = TextOverflow.Ellipsis, // Ellipsis for overflow
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.constrainAs(descriptionRef) {
                     top.linkTo(titleRef.bottom, margin = 4.dp)
                     start.linkTo(parent.start)
@@ -305,7 +312,6 @@ fun BreakfastCardItem(
                 }
             )
 
-            // Time Section
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.constrainAs(timeRef) {
@@ -327,7 +333,6 @@ fun BreakfastCardItem(
                 )
             }
 
-            // Favorite Icon Section
             IconButton(
                 onClick = {
                     onFavoriteToggle(!recipe.isFavorite)

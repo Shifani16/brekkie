@@ -13,6 +13,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -44,6 +48,15 @@ fun PolicyPage(modifier: Modifier = Modifier, navController: NavHostController, 
                 .padding(horizontal = 16.dp, vertical = 16.dp)
                 .padding(bottom = 100.dp)
         ) {
+            IconButton(onClick = { navController.popBackStack() }) {
+                Icon(
+                    imageVector = Icons.Default.ArrowBack,
+                    contentDescription = "Kembali",
+                    tint = Color.Black
+
+                )
+            }
+            Spacer(modifier = Modifier.height(20.dp))
             Text(
                 text = buildAnnotatedString {
                     withStyle(
@@ -81,21 +94,21 @@ fun PolicyPage(modifier: Modifier = Modifier, navController: NavHostController, 
             Spacer(modifier = Modifier.height(20.dp))
 
             Section(
-                title = "Lorem Ipsum",
+                title = "Selamat datang di Brekkie ",
                 content = stringResource(id = R.string.paragraf)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Section(
-                title = "1. Lorem Ipsum",
+                title = "1. Keamanan Privasi",
                 content = stringResource(id = R.string.paragraf2)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Section(
-                title = "2. Lorem Ipsum",
+                title = "2. Hak Anda",
                 content = stringResource(id = R.string.paragraf3)
             )
         }
@@ -113,6 +126,8 @@ fun PolicyPage(modifier: Modifier = Modifier, navController: NavHostController, 
         }
     }
 }
+
+
 
 @Composable
 fun Section(title: String, content: String) {

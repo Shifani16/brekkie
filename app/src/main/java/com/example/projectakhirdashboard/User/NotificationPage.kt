@@ -58,10 +58,16 @@ import android.Manifest
 import android.net.Uri
 import android.provider.Settings
 import android.util.Log
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
-import com.example.projectakhirdashboard.AlarmReceiver
+import com.example.projectakhirdashboard.Alarm.AlarmReceiver
 import com.example.projectakhirdashboard.BottomNavigationBar
+import com.example.projectakhirdashboard.Notification.cancelDailyNotification
+import com.example.projectakhirdashboard.Notification.scheduleDailyNotification
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -136,7 +142,15 @@ fun NotificationPage(modifier: Modifier = Modifier, navController: NavHostContro
             .verticalScroll(rememberScrollState())
             .padding(bottom = 100.dp)
     ) {
-        Spacer(modifier = Modifier.height(40.dp))
+        IconButton(onClick = { navController.popBackStack() }) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Kembali",
+                tint = Color.Black
+
+            )
+        }
+        Spacer(modifier = Modifier.height(20.dp))
         Row(verticalAlignment = Alignment.Bottom) {
             Text(
                 text = "Notifikasi",
@@ -343,7 +357,7 @@ fun TimePickerDialog(onDismissRequest: () -> Unit, onTimeSelected: (Calendar) ->
     ) {
         Surface(
             shape = RoundedCornerShape(16.dp),
-            color = Color.White, // Set white background
+            color = Color.White,
             elevation = 8.dp,
             modifier = Modifier.fillMaxWidth()
         ) {
@@ -360,7 +374,6 @@ fun TimePickerDialog(onDismissRequest: () -> Unit, onTimeSelected: (Calendar) ->
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Custom Time Picker
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center

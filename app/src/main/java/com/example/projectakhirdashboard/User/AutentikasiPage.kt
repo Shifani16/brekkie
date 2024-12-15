@@ -17,6 +17,8 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -70,7 +72,15 @@ fun AutentikasiPage(modifier: Modifier = Modifier, navController: NavHostControl
             .verticalScroll(rememberScrollState())
             .padding(bottom = 100.dp)
     ) {
-        Spacer(modifier = Modifier.height(40.dp))
+        IconButton(onClick = { navController.popBackStack() }) {
+            Icon(
+                imageVector = Icons.Default.ArrowBack,
+                contentDescription = "Kembali",
+                tint = Color.Black
+
+            )
+        }
+        Spacer(modifier = Modifier.height(20.dp))
 
         Text(
             text = "Password &",

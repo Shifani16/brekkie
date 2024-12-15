@@ -1,13 +1,48 @@
 {
-  "popularPackages": [
-    {"name": "Paket Tinggi Protein", "price": "Rp 170.000", "imageResId": "ic_protein"},
-    {"name": "Paket Ekonomis", "price": "Rp 120.000", "imageResId": "ic_ekonomis"},
-    {"name": "Paket Lokal", "price": "Rp 135.000", "imageResId": "ic_lokal"},
-    {"name": "Paket Vegetarian", "price": "Rp 140.000", "imageResId": "ic_veg"}
+  "populerPackages": [
+    {
+      "id": "populer_001",
+      "name": "Paket Tinggi Protein",
+      "price": "Rp 170.000",
+      "iconRes": "ic_protein"
+    },
+    {
+      "id": "populer_002",
+      "name": "Paket Ekonomis",
+      "price": "Rp 120.000",
+      "iconRes": "ic_ekonomis"
+    },
+    {
+      "id": "populer_003",
+      "name": "Paket Lokal",
+      "price": "Rp 135.000",
+      "iconRes": "ic_lokal"
+    },
+    {
+      "id": "populer_004",
+      "name": "Paket Vegetarian",
+      "price": "Rp 140.000",
+      "iconRes": "ic_veg"
+    }
   ],
-  "economicalPackages": [
-    {"name": "Paket Hemat 1", "price": "Rp 80.000", "imageResId": "ic_protein"},
-    {"name": "Paket Hemat 2", "price": "Rp 95.000", "imageResId": "ic_ekonomis"},
-    {"name": "Paket Hemat 3", "price": "Rp 75.000", "imageResId": "ic_veg"}
+  "ekonomisPackages": [
+    {
+      "id": "ekonomis_001",
+      "name": "Paket Hemat 1",
+      "price": "Rp 80.000",
+      "iconRes": "ic_protein"
+    },
+    {
+      "id": "ekonomis_002",
+      "name": "Paket Hemat 2",
+      "price": "Rp 95.000",
+      "iconRes": "ic_ekonomis"
+    },
+    {
+      "id": "ekonomis_003",
+      "name": "Paket Hemat 3",
+      "price": "Rp 75.000",
+      "iconRes": "ic_veg"
+    }
   ]
 }

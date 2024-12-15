@@ -7,7 +7,7 @@
         "title": "Classic Caesar Salad",
         "ingredient": "Romaine lettuce, caesar dressing, croutons, grated parmesan cheese",
         "description": "Salad klasik dengan selada romaine segar, saus caesar yang creamy, crouton renyah, dan keju parmesan parut.",
-        "time": "10 mins",
+        "time": "10 menit",
         "steps": [
           { "id": "step_1", "instruction": "Cuci dan potong selada romaine." },
           { "id": "step_2", "instruction": "Masukkan selada ke dalam mangkuk salad dan tuangkan saus caesar." },
@@ -21,7 +21,7 @@
         "title": "Greek Salad",
         "ingredient": "Tomatoes, cucumbers, red onions, kalamata olives, feta cheese, olive oil, lemon juice, oregano",
         "description": "Salad Mediterania yang segar dengan tomat, mentimun, bawang merah, zaitun kalamata, keju feta, minyak zaitun, jus lemon, dan oregano.",
-        "time": "10-15 mins",
+        "time": "10-15 menit",
         "steps": [
           { "id": "step_1", "instruction": "Cuci dan potong tomat, mentimun, dan bawang merah." },
           { "id": "step_2", "instruction": "Masukkan sayuran ke dalam mangkuk besar." },
@@ -36,7 +36,7 @@
         "title": "Fruit Salad",
         "ingredient": "Mixed fruits (apple, orange, grape), yogurt, honey",
         "description": "Salad buah segar dengan campuran buah-buahan, yogurt, dan madu.",
-        "time": "5-10 mins",
+        "time": "5-10 menit",
         "steps": [
           { "id": "step_1", "instruction": "Cuci dan potong buah-buahan sesuai ukuran yang diinginkan." },
           { "id": "step_2", "instruction": "Masukkan buah ke dalam mangkuk besar." },
@@ -50,7 +50,7 @@
         "title": "Avocado Salad",
         "ingredient": "Avocado, lettuce, cherry tomatoes, olive oil, lemon juice",
         "description": "Salad sehat dengan alpukat, selada, tomat ceri, minyak zaitun, dan jus lemon.",
-        "time": "10 mins",
+        "time": "10 menit",
         "steps": [
           { "id": "step_1", "instruction": "Cuci dan potong selada dan tomat ceri." },
           { "id": "step_2", "instruction": "Kupas dan potong alpukat menjadi irisan." },
@@ -64,7 +64,7 @@
         "title": "Quinoa Salad",
         "ingredient": "Quinoa, cucumber, tomato, parsley, olive oil, lemon juice",
         "description": "Salad dengan quinoa yang bergizi, mentimun, tomat, peterseli, minyak zaitun, dan jus lemon.",
-        "time": "15 mins",
+        "time": "15 menit",
         "steps": [
           { "id": "step_1", "instruction": "Rebus quinoa hingga matang, lalu tiriskan." },
           { "id": "step_2", "instruction": "Cuci dan potong mentimun, tomat, dan peterseli." },
@@ -77,13 +77,13 @@
         "image": "https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2F3b432b41ce04c96a08d77befa42b9881a587a436",
         "title": "Caprese Salad",
         "ingredient": "Tomatoes, fresh mozzarella, basil leaves, balsamic glaze, olive oil",
-        "description": "A simple Italian salad with fresh mozzarella, tomatoes, and basil.",
-        "time": "10 mins",
+        "description": "Salad Italia sederhana dengan mozzarella segar, tomat, dan basil.",
+        "time": "10 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Slice tomatoes and mozzarella." },
-          { "id": "step_2", "instruction": "Arrange tomato and mozzarella slices on a plate, alternating them." },
-          { "id": "step_3", "instruction": "Tuck fresh basil leaves between the slices." },
-          { "id": "step_4", "instruction": "Drizzle with balsamic glaze and olive oil." }
+          { "id": "step_1", "instruction": "Iris tomat dan mozzarella." },
+          { "id": "step_2", "instruction": "Tata irisan tomat dan mozzarella di atas piring secara bergantian." },
+          { "id": "step_3", "instruction": "Sisipkan daun basil segar di antara irisan." },
+          { "id": "step_4", "instruction": "Siram dengan balsamic glaze dan minyak zaitun." }
         ]
       },
       {
@@ -91,14 +91,14 @@
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS03NAjUeira1ssPL7q1x0A1spSJmwY9ZSi7A&s",
         "title": "Spinach Salad with Strawberries and Poppy Seed Dressing",
         "ingredient": "Spinach, strawberries, almonds, poppy seed dressing",
-        "description": "A refreshing salad with spinach, strawberries, and a sweet poppy seed dressing.",
-        "time": "15 mins",
+        "description": "Salad segar dengan bayam, stroberi, dan dressing biji poppy yang manis.",
+        "time": "15 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Wash and dry spinach." },
-          { "id": "step_2", "instruction": "Hull and slice strawberries." },
-          { "id": "step_3", "instruction": "Toast sliced almonds." },
-          { "id": "step_4", "instruction": "Combine spinach, strawberries, and almonds in a bowl." },
-          { "id": "step_5", "instruction": "Toss with poppy seed dressing." }
+          { "id": "step_1", "instruction": "Cuci dan keringkan bayam." },
+          { "id": "step_2", "instruction": "Potong dan iris stroberi." },
+          { "id": "step_3", "instruction": "Panggang almond iris hingga harum." },
+          { "id": "step_4", "instruction": "Campurkan bayam, stroberi, dan almond dalam mangkuk." },
+          { "id": "step_5", "instruction": "Aduk dengan dressing biji poppy." }
         ]
       },
       {
@@ -106,13 +106,13 @@
         "image": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2019/04/Cobb-Salad-main.jpg",
         "title": "Cobb Salad",
         "ingredient": "Lettuce, grilled chicken, bacon, avocado, tomatoes, hard-boiled eggs, blue cheese, vinaigrette dressing",
-        "description": "A hearty American salad with grilled chicken, bacon, avocado, and blue cheese.",
-        "time": "20 mins",
+        "description": "Salad Amerika yang kaya dengan ayam panggang, bacon, alpukat, dan keju biru.",
+        "time": "20 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Chop lettuce and arrange on a plate." },
-          { "id": "step_2", "instruction": "Arrange grilled chicken, crumbled bacon, avocado slices, chopped tomatoes, and hard-boiled egg wedges over the lettuce." },
-          { "id": "step_3", "instruction": "Crumble blue cheese over the salad." },
-          { "id": "step_4", "instruction": "Serve with vinaigrette dressing." }
+          { "id": "step_1", "instruction": "Potong selada dan tata di piring." },
+          { "id": "step_2", "instruction": "Tata ayam panggang, bacon cincang, irisan alpukat, tomat cincang, dan irisan telur rebus di atas selada." },
+          { "id": "step_3", "instruction": "Taburkan keju biru di atas salad." },
+          { "id": "step_4", "instruction": "Sajikan dengan dressing vinaigrette." }
         ]
       },
       {
@@ -120,11 +120,11 @@
         "image": "https://i2.wp.com/www.downshiftology.com/wp-content/uploads/2020/06/Taco-Salad-main.jpg",
         "title": "Taco Salad",
         "ingredient": "Ground beef, taco seasoning, tortilla chips, lettuce, tomatoes, cheese, salsa, sour cream",
-        "description": "A fun and flavorful salad with seasoned ground beef, tortilla chips, and all your favorite taco toppings.",
-        "time": "25 mins",
+        "description": "Salad yang menyenangkan dan penuh rasa dengan daging sapi cincang berbumbu, keripik tortilla, dan semua topping taco favorit Anda.",
+        "time": "25 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Brown ground beef and season with taco seasoning." },
-          { "id": "step_2", "instruction": "Layer crushed tortilla chips, lettuce, seasoned ground beef, tomatoes, cheese, salsa, and sour cream in a bowl or on individual plates." }
+          { "id": "step_1", "instruction": "Masak daging sapi cincang dan bumbui dengan bumbu taco." },
+          { "id": "step_2", "instruction": "Susun keripik tortilla hancur, selada, daging sapi cincang berbumbu, tomat, keju, salsa, dan krim asam dalam mangkuk atau piring." }
         ]
       },
       {
@@ -132,15 +132,15 @@
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmehmWoIA4MYPm5Y4w7-h9cJO1wu7xqDS0Rg&s",
         "title": "Waldorf Salad",
         "ingredient": "Apples, celery, grapes, walnuts, mayonnaise, lemon juice",
-        "description": "A classic American salad with apples, celery, grapes, and a creamy mayonnaise dressing.",
-        "time": "15 mins",
+        "description": "Salad klasik Amerika dengan apel, seledri, anggur, dan dressing mayones yang creamy.",
+        "time": "15 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Dice apples and celery." },
-          { "id": "step_2", "instruction": "Halve grapes." },
-          { "id": "step_3", "instruction": "Chop walnuts." },
-          { "id": "step_4", "instruction": "Combine apples, celery, grapes, and walnuts in a bowl." },
-          { "id": "step_5", "instruction": "In a separate bowl, whisk together mayonnaise and lemon juice." },
-          { "id": "step_6", "instruction": "Pour dressing over salad and toss to coat." }
+          { "id": "step_1", "instruction": "Potong dadu apel dan seledri." },
+          { "id": "step_2", "instruction": "Belah dua anggur." },
+          { "id": "step_3", "instruction": "Cincang walnut." },
+          { "id": "step_4", "instruction": "Campurkan apel, seledri, anggur, dan walnut dalam mangkuk." },
+          { "id": "step_5", "instruction": "Dalam mangkuk terpisah, kocok mayones dan air lemon." },
+          { "id": "step_6", "instruction": "Tuang dressing ke salad dan aduk hingga merata." }
         ]
       }
     ],
@@ -151,7 +151,7 @@
         "title": "Mint Lemonade",
         "ingredient": "Fresh lemon juice, sugar or honey, mint leaves, water and ice",
         "description": "Minuman segar dengan jus lemon, pemanis, daun mint, dan air dingin.",
-        "time": "5-10 mins",
+        "time": "5-10 menit",
         "steps": [
           { "id": "step_1", "instruction": "Campurkan jus lemon dan gula atau madu dalam gelas." },
           { "id": "step_2", "instruction": "Tambahkan daun mint segar dan hancurkan sedikit dengan sendok." },
@@ -165,7 +165,7 @@
         "title": "Strawberry Smoothie",
         "ingredient": "Fresh strawberries, Yogurt, Milk, Honey",
         "description": "Smoothie lembut dan lezat yang terbuat dari stroberi segar, yogurt, susu, dan madu.",
-        "time": "5 mins",
+        "time": "5 menit",
         "steps": [
           { "id": "step_1", "instruction": "Cuci stroberi dan potong kecil-kecil." },
           { "id": "step_2", "instruction": "Masukkan stroberi, yogurt, susu, dan madu ke dalam blender." },
@@ -179,7 +179,7 @@
         "title": "Iced Matcha Latte",
         "ingredient": "Matcha powder, Milk, Ice cubes, Sweetener",
         "description": "Minuman dingin yang menyegarkan dengan bubuk matcha, susu, dan es batu.",
-        "time": "5-7 mins",
+        "time": "5-7 menit",
         "steps": [
           { "id": "step_1", "instruction": "Campurkan bubuk matcha dengan sedikit air panas hingga larut." },
           { "id": "step_2", "instruction": "Tambahkan pemanis sesuai selera dan aduk rata." },
@@ -192,13 +192,13 @@
         "image": "https://frostingandfettuccine.com/wp-content/uploads/2022/12/Caramel-Iced-Coffee-6.jpg",
         "title": "Iced Coffee",
         "ingredient": "Brewed coffee, milk, ice, sugar (optional)",
-        "description": "A simple and refreshing iced coffee.",
-        "time": "5 mins",
+        "description": "Minuman kopi dingin yang sederhana dan menyegarkan.",
+        "time": "5 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Brew strong coffee and let it cool."},
-          {"id": "step_2", "instruction": "Fill a glass with ice."},
-          {"id": "step_3", "instruction": "Pour coffee over ice."},
-          {"id": "step_4", "instruction": "Add milk and sugar to taste."}
+          { "id": "step_1", "instruction": "Seduh kopi kental dan biarkan dingin." },
+          { "id": "step_2", "instruction": "Isi gelas dengan es batu." },
+          { "id": "step_3", "instruction": "Tuangkan kopi ke dalam gelas berisi es." },
+          { "id": "step_4", "instruction": "Tambahkan susu dan gula sesuai selera." }
         ]
       },
       {
@@ -206,12 +206,12 @@
         "image": "https://www.simplyrecipes.com/thmb/7oZrY9CXkHSqrV6diryN7Kwyups=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Recipes-Mango-Lassi-LEAD-08-9b45bb7d7d6d45a79deee3013f2f3cf1.jpg",
         "title": "Mango Lassi",
         "ingredient": "Mango, yogurt, milk, sugar/honey (optional)",
-        "description": "A creamy and sweet Indian yogurt drink.",
-        "time": "5 mins",
+        "description": "Minuman yogurt khas India yang creamy dan manis.",
+        "time": "5 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Peel and chop a ripe mango."},
-          {"id": "step_2", "instruction": "Blend mango, yogurt, milk, and sugar/honey (if using) until smooth."},
-          {"id": "step_3", "instruction": "Pour into a glass and serve chilled."}
+          { "id": "step_1", "instruction": "Kupas dan potong mangga matang." },
+          { "id": "step_2", "instruction": "Blender mangga, yogurt, susu, dan gula/madu (jika digunakan) hingga halus." },
+          { "id": "step_3", "instruction": "Tuangkan ke dalam gelas dan sajikan dingin." }
         ]
       },
       {
@@ -219,14 +219,13 @@
         "image": "https://sandhyahariharan.co.uk/wp-content/uploads/2011/05/homemade-pineapple-juice-7-of-7.jpg",
         "title": "Pineapple Juice",
         "ingredient": "Fresh pineapple, ice (optional)",
-        "description": "A refreshing and naturally sweet juice.",
-        "time": "10 mins",
+        "description": "Jus yang segar dan manis secara alami.",
+        "time": "10 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Peel and chop a fresh pineapple."},
-          {"id": "step_2", "instruction": "Blend pineapple chunks until smooth."},
-          {"id": "step_3", "instruction": "Strain the juice to remove pulp (optional)."},
-          {"id": "step_4", "instruction": "Serve chilled."}
-
+          { "id": "step_1", "instruction": "Kupas dan potong nanas segar." },
+          { "id": "step_2", "instruction": "Blender potongan nanas hingga halus." },
+          { "id": "step_3", "instruction": "Saring jus untuk menghilangkan ampas (opsional)." },
+          { "id": "step_4", "instruction": "Sajikan dingin." }
         ]
       },
       {
@@ -234,13 +233,13 @@
         "image": "https://bakerbynature.com/wp-content/uploads/2024/01/Hot-Chocolate-3.jpg",
         "title": "Hot Chocolate",
         "ingredient": "Milk, cocoa powder, sugar, chocolate chips (optional)",
-        "description": "A warm and comforting chocolate drink.",
-        "time": "5-7 mins",
+        "description": "Minuman cokelat yang hangat dan menenangkan.",
+        "time": "5-7 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Heat milk in a saucepan."},
-          {"id": "step_2", "instruction": "Whisk in cocoa powder and sugar until dissolved."},
-          {"id": "step_3", "instruction": "Add chocolate chips (optional) and stir until melted."},
-          {"id": "step_4", "instruction": "Serve hot."}
+          { "id": "step_1", "instruction": "Panaskan susu dalam panci." },
+          { "id": "step_2", "instruction": "Kocok bubuk kakao dan gula hingga larut." },
+          { "id": "step_3", "instruction": "Tambahkan cokelat chip (opsional) dan aduk hingga meleleh." },
+          { "id": "step_4", "instruction": "Sajikan hangat." }
         ]
       },
       {
@@ -248,12 +247,12 @@
         "image": "https://cdn.loveandlemons.com/wp-content/uploads/2022/12/green-smoothie-recipes.jpg",
         "title": "Green Smoothie",
         "ingredient": "Spinach, banana, mango, almond milk",
-        "description": "A healthy and delicious green smoothie packed with nutrients.",
-        "time": "5 mins",
+        "description": "Smoothie hijau yang sehat dan lezat, penuh nutrisi.",
+        "time": "5 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Combine spinach, banana, mango, and almond milk in a blender."},
-          {"id": "step_2", "instruction": "Blend until smooth."},
-          {"id": "step_3", "instruction": "Serve immediately."}
+          { "id": "step_1", "instruction": "Campurkan bayam, pisang, mangga, dan susu almond ke dalam blender." },
+          { "id": "step_2", "instruction": "Blender hingga halus." },
+          { "id": "step_3", "instruction": "Sajikan segera." }
         ]
       }
     ],
@@ -264,7 +263,7 @@
         "title": "Fried Rice",
         "ingredient": "Cooked rice, vegetables (carrots, peas, etc.), Soy sauce, Eggs",
         "description": "Hidangan nasi yang gurih dengan sayuran, kecap asin, dan telur orak-arik.",
-        "time": "20-25 mins",
+        "time": "20-25 menit",
         "steps": [
           { "id": "step_1", "instruction": "Panaskan minyak di wajan." },
           { "id": "step_2", "instruction": "Tambahkan sayuran cincang seperti wortel dan kacang polong, tumis hingga empuk." },
@@ -279,7 +278,7 @@
         "title": "Rice Porridge",
         "ingredient": "Rice, chicken broth, salt, ginger",
         "description": "Bubur nasi hangat dengan kaldu ayam.",
-        "time": "40 mins",
+        "time": "40 menit",
         "steps": [
           {"id": "step_1", "instruction": "Masak nasi dengan kaldu ayam hingga lembut."},
           {"id": "step_2", "instruction": "Tambahkan garam dan jahe untuk rasa."},
@@ -291,13 +290,13 @@
         "image": "https://cdn.loveandlemons.com/wp-content/uploads/2023/05/spanish-rice-recipe.jpg",
         "title": "Spanish Rice",
         "ingredient": "Rice, tomato sauce, onion, garlic, vegetable broth",
-        "description": "A flavorful rice dish cooked with tomato sauce and vegetables.",
-        "time": "25 mins",
+        "description": "Hidangan nasi yang lezat dimasak dengan saus tomat dan sayuran.",
+        "time": "25 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Sauté chopped onion and garlic in oil."},
-          {"id": "step_2", "instruction": "Add rice and cook for a few minutes."},
-          {"id": "step_3", "instruction": "Stir in tomato sauce and vegetable broth."},
-          {"id": "step_4", "instruction": "Bring to a boil, then reduce heat and simmer until rice is cooked."}
+          { "id": "step_1", "instruction": "Tumis bawang dan bawang putih cincang dalam minyak." },
+          { "id": "step_2", "instruction": "Tambahkan nasi dan masak selama beberapa menit." },
+          { "id": "step_3", "instruction": "Masukkan saus tomat dan kaldu sayuran." },
+          { "id": "step_4", "instruction": "Didihkan, lalu kecilkan api dan masak hingga nasi matang." }
         ]
       },
       {
@@ -305,14 +304,14 @@
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKZ4zgmkiGui6AD28lHYjPqx_v8TAYrolzlA&s",
         "title": "Risotto",
         "ingredient": "Arborio rice, vegetable broth, Parmesan cheese, white wine, onion, butter",
-        "description": "A creamy Italian rice dish.",
-        "time": "30 mins",
+        "description": "Hidangan nasi Italia yang creamy.",
+        "time": "30 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Sauté chopped onion in butter."},
-          {"id": "step_2", "instruction": "Add rice and toast for a few minutes."},
-          {"id": "step_3", "instruction": "Deglaze with white wine."},
-          {"id": "step_4", "instruction": "Gradually add warm vegetable broth, stirring constantly, until rice is cooked and creamy."},
-          {"id": "step_5", "instruction": "Stir in Parmesan cheese."}
+          { "id": "step_1", "instruction": "Tumis bawang cincang dengan mentega." },
+          { "id": "step_2", "instruction": "Tambahkan nasi dan panggang selama beberapa menit." },
+          { "id": "step_3", "instruction": "Deglaze dengan anggur putih." },
+          { "id": "step_4", "instruction": "Tambahkan kaldu sayuran hangat sedikit demi sedikit sambil terus diaduk hingga nasi matang dan creamy." },
+          { "id": "step_5", "instruction": "Aduk dengan keju Parmesan." }
         ]
       },
       {
@@ -320,12 +319,12 @@
         "image": "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/coconut-rice-recipe-500x500.jpg",
         "title": "Coconut Rice",
         "ingredient": "Rice, coconut milk, water, salt",
-        "description": "Rice cooked in coconut milk for a sweet and fragrant flavor.",
-        "time": "20 mins",
+        "description": "Nasi dimasak dengan santan untuk rasa yang manis dan harum.",
+        "time": "20 menit",
         "steps": [
-          {"id": "step_1", "instruction": "Rinse rice."},
-          {"id": "step_2", "instruction": "Combine rice, coconut milk, water, and salt in a saucepan."},
-          {"id": "step_3", "instruction": "Bring to a boil, then reduce heat and simmer until rice is cooked."}
+          { "id": "step_1", "instruction": "Bilas nasi." },
+          { "id": "step_2", "instruction": "Campurkan nasi, santan, air, dan garam dalam panci." },
+          { "id": "step_3", "instruction": "Didihkan, lalu kecilkan api dan masak hingga nasi matang." }
         ]
       },
       {
@@ -333,13 +332,13 @@
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDhP_3GxHU27qgD0whesQEDg-vUFBvFbXWA&s",
         "title": "Lemon Rice",
         "ingredient": "Cooked rice, lemon juice, turmeric, mustard seeds, curry leaves",
-        "description": "A simple and tangy rice dish with lemon flavor.",
-        "time": "15 mins",
+        "description": "Hidangan nasi sederhana dengan rasa lemon yang segar.",
+        "time": "15 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Heat oil in a pan. Add mustard seeds and let them splutter." },
-          { "id": "step_2", "instruction": "Add curry leaves and turmeric powder. Sauté briefly." },
-          { "id": "step_3", "instruction": "Add cooked rice and lemon juice. Mix well." },
-          { "id": "step_4", "instruction": "Serve hot." }
+          { "id": "step_1", "instruction": "Panaskan minyak dalam wajan. Tambahkan biji mustard dan biarkan meletup." },
+          { "id": "step_2", "instruction": "Tambahkan daun kari dan bubuk kunyit. Tumis sebentar." },
+          { "id": "step_3", "instruction": "Tambahkan nasi matang dan air perasan lemon. Aduk rata." },
+          { "id": "step_4", "instruction": "Sajikan hangat." }
         ]
       },
       {
@@ -347,12 +346,12 @@
         "image": "https://www.justonecookbook.com/wp-content/uploads/2023/09/How-to-Make-Sushi-Rice-3232-I-2.jpg",
         "title": "Sushi Rice",
         "ingredient": "Sushi rice, rice vinegar, sugar, salt",
-        "description": "Sticky rice seasoned with vinegar for making sushi.",
-        "time": "30 mins",
+        "description": "Nasi lengket yang dibumbui dengan cuka untuk membuat sushi.",
+        "time": "30 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Rinse sushi rice thoroughly." },
-          { "id": "step_2", "instruction": "Cook rice according to package directions." },
-          { "id": "step_3", "instruction": "While rice is still warm, gently mix in rice vinegar, sugar, and salt." }
+          { "id": "step_1", "instruction": "Bilas nasi sushi hingga bersih." },
+          { "id": "step_2", "instruction": "Masak nasi sesuai petunjuk pada kemasan." },
+          { "id": "step_3", "instruction": "Saat nasi masih hangat, campurkan cuka nasi, gula, dan garam secara perlahan." }
         ]
       }
     ],
@@ -363,7 +362,7 @@
         "title": "Garlic Bread",
         "ingredient": "Bread slices, Butter, Garlic, Parsley",
         "description": "Hidangan pembuka yang sederhana dan lezat dengan roti, mentega, bawang putih, dan peterseli.",
-        "time": "10-15 mins",
+        "time": "10-15 menit",
         "steps": [
           { "id": "step_1", "instruction": "Campurkan mentega dengan bawang putih cincang dan peterseli." },
           { "id": "step_2", "instruction": "Oleskan campuran tersebut ke permukaan roti." },
@@ -377,7 +376,7 @@
         "title": "Banana Bread",
         "ingredient": "Ripe bananas, Sugar, flour, eggs, Baking soda",
         "description": "Roti yang lembut dan manis dengan pisang matang, gula, dan sentuhan kayu manis.",
-        "time": "60 mins",
+        "time": "60 menit",
         "steps": [
           { "id": "step_1", "instruction": "Panaskan oven dan siapkan loyang." },
           { "id": "step_2", "instruction": "Hancurkan pisang matang di mangkuk besar." },
@@ -418,13 +417,13 @@
         "image": "https://www.allrecipes.com/thmb/2JmlEafcVbOJpFu4wFUGvUxMNWQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/76594-grandmothers-buttermilk-cornbread-beauty-3x4-0135064414801604-dd84dcaf1d0f421eb3b6fdced8cf0ad3.jpg",
         "title": "Cornbread",
         "ingredient": "Cornmeal, flour, sugar, baking powder, eggs, milk, oil",
-        "description": "Slightly sweet bread made with cornmeal.",
-        "time": "25 mins",
+        "description": "Roti manis ringan yang dibuat dengan tepung jagung.",
+        "time": "25 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Combine dry ingredients (cornmeal, flour, sugar, baking powder)." },
-          { "id": "step_2", "instruction": "In a separate bowl, whisk together eggs, milk, and oil." },
-          { "id": "step_3", "instruction": "Combine wet and dry ingredients, mixing until just combined." },
-          { "id": "step_4", "instruction": "Pour batter into a greased baking pan and bake until golden brown." }
+          { "id": "step_1", "instruction": "Campurkan bahan kering (tepung jagung, tepung terigu, gula, baking powder)." },
+          { "id": "step_2", "instruction": "Dalam mangkuk terpisah, kocok telur, susu, dan minyak." },
+          { "id": "step_3", "instruction": "Campurkan bahan basah dan kering, aduk hingga tercampur saja." },
+          { "id": "step_4", "instruction": "Tuang adonan ke dalam loyang yang sudah diolesi minyak dan panggang hingga berwarna keemasan." }
         ]
       },
       {
@@ -432,14 +431,14 @@
         "image": "https://schoolnightvegan.com/wp-content/uploads/2024/08/vegan-cinnamon-rolls-34.jpg",
         "title": "Cinnamon Rolls",
         "ingredient": "Flour, yeast, milk, sugar, butter, cinnamon",
-        "description": "Sweet rolls with a cinnamon filling and a sweet glaze.",
-        "time": "90 mins",
+        "description": "Roti manis dengan isi kayu manis dan lapisan gula.",
+        "time": "90 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Activate yeast in warm milk." },
-          { "id": "step_2", "instruction": "Combine flour, sugar, and butter.  Add yeast mixture and knead into a dough." },
-          { "id": "step_3", "instruction": "Let dough rise. Roll out and spread with cinnamon-sugar mixture." },
-          { "id": "step_4", "instruction": "Roll up tightly and cut into rolls. Let rise again." },
-          { "id": "step_5", "instruction": "Bake until golden brown. Frost with glaze while still warm." }
+          { "id": "step_1", "instruction": "Aktifkan ragi dalam susu hangat." },
+          { "id": "step_2", "instruction": "Campurkan tepung, gula, dan mentega. Tambahkan campuran ragi dan uleni menjadi adonan." },
+          { "id": "step_3", "instruction": "Biarkan adonan mengembang. Giling dan olesi dengan campuran gula-kayu manis." },
+          { "id": "step_4", "instruction": "Gulung rapat dan potong menjadi gulungan. Biarkan mengembang lagi." },
+          { "id": "step_5", "instruction": "Panggang hingga keemasan. Lapisi dengan glasir saat masih hangat." }
         ]
       },
       {
@@ -447,14 +446,13 @@
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYj3GeeirBDTYrwMG_qPdNZuBvIpzr39XsDw&s",
         "title": "Dinner Rolls",
         "ingredient": "Flour, yeast, milk, sugar, butter, egg",
-        "description": "Soft and fluffy rolls perfect for dinner.",
-        "time": "60 mins",
+        "description": "Roti lembut dan empuk yang sempurna untuk makan malam.",
+        "time": "60 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Activate yeast in warm milk." },
-          { "id": "step_2", "instruction": "Combine flour, sugar, butter, and egg. Add yeast mixture and knead into a dough." },
-          { "id": "step_3", "instruction": "Let dough rise. Shape into rolls and let rise again." },
-          { "id": "step_4", "instruction": "Bake until golden brown." }
-
+          { "id": "step_1", "instruction": "Aktifkan ragi dalam susu hangat." },
+          { "id": "step_2", "instruction": "Campurkan tepung, gula, mentega, dan telur. Tambahkan campuran ragi dan uleni menjadi adonan." },
+          { "id": "step_3", "instruction": "Biarkan adonan mengembang. Bentuk menjadi gulungan dan biarkan mengembang lagi." },
+          { "id": "step_4", "instruction": "Panggang hingga keemasan." }
         ]
       },
       {
@@ -462,14 +460,13 @@
         "image": "https://diethood.com/wp-content/uploads/2021/02/two-ingredient-naan-bread-7-500x375.jpg",
         "title": "Naan Bread",
         "ingredient": "Flour, yogurt, yeast, oil, salt",
-        "description": "Soft and chewy Indian flatbread.",
-        "time": "45 mins",
+        "description": "Roti pipih India yang lembut dan kenyal.",
+        "time": "45 menit",
         "steps": [
-          { "id": "step_1", "instruction": "Combine flour, yogurt, yeast, oil, and salt to form a dough." },
-          { "id": "step_2", "instruction": "Let the dough rise." },
-          { "id": "step_3", "instruction": "Divide the dough and roll out into flatbreads." },
-          { "id": "step_4", "instruction": "Cook on a hot griddle or skillet until puffed and slightly charred." }
-
+          { "id": "step_1", "instruction": "Campurkan tepung, yogurt, ragi, minyak, dan garam untuk membentuk adonan." },
+          { "id": "step_2", "instruction": "Biarkan adonan mengembang." },
+          { "id": "step_3", "instruction": "Bagi adonan dan giling menjadi roti pipih." },
+          { "id": "step_4", "instruction": "Masak di atas wajan panas hingga mengembang dan sedikit hangus." }
         ]
       }
     ]

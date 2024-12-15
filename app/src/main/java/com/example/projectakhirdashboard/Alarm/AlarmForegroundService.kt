@@ -1,7 +1,6 @@
-package com.example.projectakhirdashboard
+package com.example.projectakhirdashboard.Alarm
 
 import android.app.Service
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.media.Ringtone
@@ -11,9 +10,6 @@ import android.os.IBinder
 import android.os.VibrationEffect
 import android.os.Vibrator
 import androidx.annotation.RequiresApi
-import androidx.core.app.ServiceCompat.stopForeground
-import androidx.core.content.ContextCompat.getSystemService
-import java.security.Provider
 
 class AlarmForegroundService : Service() {
     companion object {

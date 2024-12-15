@@ -42,9 +42,9 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".AlarmForegroundService"
+            android:name=".Alarm.AlarmForegroundService"
             android:exported="false" />
-        <receiver android:name=".AlarmReceiver"
+        <receiver android:name=".Alarm.AlarmReceiver"
             android:exported="true"
             android:enabled="true"/>
     </application>

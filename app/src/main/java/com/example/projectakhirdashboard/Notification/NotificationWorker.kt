@@ -1,4 +1,4 @@
-package com.example.projectakhirdashboard.User
+package com.example.projectakhirdashboard.Notification
 
 import android.app.Activity
 import android.app.NotificationChannel
@@ -24,7 +24,7 @@ import androidx.work.PeriodicWorkRequestBuilder
 class NotificationWorker(context: Context, workerParams: WorkerParameters) : Worker(context, workerParams) {
 
     override fun doWork(): Result {
-        val message = inputData.getString("MESSAGE") ?: "Time to wake up!"
+        val message = inputData.getString("MESSAGE") ?: "Saatnya sarapan!"
         showNotification(applicationContext, "Reminder", message)
         return Result.success()
     }

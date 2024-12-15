@@ -1,5 +1,6 @@
 package com.example.projectakhirdashboard.Menu
 
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -40,6 +41,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -51,6 +53,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -67,9 +70,17 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.projectakhirdashboard.BottomNavigationBar
 import com.example.projectakhirdashboard.Data.PackageItem
+import com.example.projectakhirdashboard.Data.PackageItemDeserializer
+import com.example.projectakhirdashboard.Data.Packages
 import com.example.projectakhirdashboard.Data.PromoItem
+import com.example.projectakhirdashboard.Data.RecipeData
 import com.example.projectakhirdashboard.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import java.util.Locale
 
 @Composable
@@ -80,45 +91,36 @@ fun CateringPage(navController: NavHostController, userId: String, displayName: 
     var isCook by remember { mutableStateOf(false) }
 
     var searchText by remember { mutableStateOf("") }
+    val context = LocalContext.current
+    val packages = LoadPackages(context)
 
-    val populerPackages = remember {
-        listOf(
-            PackageItem("populer_001","Paket Tinggi Protein", "Rp 170.000", R.drawable.ic_protein),
-            PackageItem("populer_002","Paket Ekonomis", "Rp 120.000", R.drawable.ic_ekonomis),
-            PackageItem("populer_003","Paket Lokal", "Rp 135.000", R.drawable.ic_lokal),
-            PackageItem("populer_004","Paket Vegetarian", "Rp 140.000", R.drawable.ic_veg)
-        )
-    }
-
-    val ekonomisPackages = remember {
-        listOf(
-            PackageItem("ekonomis_001", "Paket Hemat 1", "Rp 80.000", R.drawable.ic_protein),
-            PackageItem("ekonomis_002", "Paket Hemat 2", "Rp 95.000", R.drawable.ic_ekonomis),
-            PackageItem("ekonomis_003", "Paket Hemat 3", "Rp 75.000", R.drawable.ic_veg)
-        )
-    }
-
-    val filteredPopulerPackages by remember(searchText) {
+    val filteredPopulerPackages by remember(packages, searchText) {
         derivedStateOf {
-            if (searchText.isBlank()) {
-                populerPackages
-            } else {
-                populerPackages.filter { packageItem ->
-                    packageItem.name.lowercase(Locale.getDefault()).contains(searchText.lowercase(Locale.getDefault()))
+            packages?.populerPackages?.let { popularPackages ->
+                if (searchText.isBlank()) {
+                    popularPackages
+                } else {
+                    popularPackages.filter { packageItem ->
+                        packageItem.name.lowercase(Locale.getDefault())
+                            .contains(searchText.lowercase(Locale.getDefault()))
+                    }
                 }
-            }
+            } ?: emptyList()
         }
     }
 
-    val filteredEkonomisPackages by remember(searchText) {
+    val filteredEkonomisPackages by remember(packages, searchText) {
         derivedStateOf {
-            if (searchText.isBlank()) {
-                ekonomisPackages
-            } else {
-                ekonomisPackages.filter { packageItem ->
-                    packageItem.name.lowercase(Locale.getDefault()).contains(searchText.lowercase(Locale.getDefault()))
+            packages?.ekonomisPackages?.let { ekonomisPackages ->
+                if (searchText.isBlank()) {
+                    ekonomisPackages
+                } else {
+                    ekonomisPackages.filter { packageItem ->
+                        packageItem.name.lowercase(Locale.getDefault())
+                            .contains(searchText.lowercase(Locale.getDefault()))
+                    }
                 }
-            }
+            } ?: emptyList()
         }
     }
 
@@ -309,7 +311,6 @@ fun PromoSection(navController: NavController) {
     }
 }
 
-
 @Composable
 fun TabButton(text: String, selected: Boolean, onClick: () -> Unit) {
     Surface(
@@ -403,7 +404,7 @@ fun BreakfastPackageSection(populerPackages: List<PackageItem>, ekonomisPackages
                             PackageCard(
                                 name = packageItem.name,
                                 price = packageItem.price,
-                                imageResId = packageItem.imageResId,
+                                imageResId = packageItem.iconRes,
                                 onItemClick = {
                                     navController.navigate("detail_order/${packageItem.id}/${packageItem.name}/${packageItem.price}")
                                     Log.d("Routes", "detail_order/${packageItem.id}/${packageItem.name}/${packageItem.price}")
@@ -499,7 +500,7 @@ fun PackageCard(name: String, price: String, imageResId: Int, onItemClick: () ->
                 .padding(10.dp)
         ) {
             Image(
-                painter = painterResource(id = imageResId),
+                painter = painterResource(imageResId),
                 contentDescription = name,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -547,5 +548,27 @@ fun PackageCard(name: String, price: String, imageResId: Int, onItemClick: () ->
         }
     }
 }
+
+@Composable
+fun LoadPackages(context: Context = LocalContext.current): Packages? {
+    var packageData by remember { mutableStateOf<Packages?>(null) }
+
+    LaunchedEffect(context) {
+        withContext(Dispatchers.IO) {
+            try {
+                val json = context.assets.open("catering.json").bufferedReader().use { it.readText() }
+                val gson = GsonBuilder()
+                    .registerTypeAdapter(PackageItem::class.java, PackageItemDeserializer(context)) // Register custom deserializer
+                    .create()
+                packageData = gson.fromJson(json, Packages::class.java)
+            } catch (e: Exception) {
+                println("Error loading JSON: ${e.message}")
+            }
+        }
+    }
+
+    return packageData
+}
+
 
 
